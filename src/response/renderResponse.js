@@ -4,7 +4,7 @@ import _ from 'lodash'
 const mapResponse = (params, filter) => {
   let content = ''
   let elementsFilter = filter == 'Fans'
-  
+
   params.map((res) => {
     if (res.title.includes(filter)) {
       if (res.content.length > 0) {
@@ -26,10 +26,10 @@ const mapResponse = (params, filter) => {
       content += `${filter} hasn't added yet.`
     }
   })
-  
+
   const replaceContent = content.replace(new RegExp(filter + " hasn't added yet.", "ig"), '')
   const result = _.isEmpty(replaceContent) ? `${filter} hasn't added yet.` : replaceContent
-  
+
   return result
 }
 
@@ -39,7 +39,7 @@ const renderResponseArknight = (params) => {
     { name: 'File', value: mapResponse(params, 'File') },
     { name: 'Analysis', value: mapResponse(params, 'Analysis') }
   ]
-  
+
   return fields
 }
 
@@ -49,7 +49,7 @@ const renderResponseBandori = (params) => {
     { name: 'Personality', value: mapResponse(params, 'Personality') }
   ]
 
-  return fields  
+  return fields
 }
 
 const renderResponseBokuben = (params) => {
@@ -58,15 +58,15 @@ const renderResponseBokuben = (params) => {
     { name: 'Personality', value: mapResponse(params, 'Personality') }
   ]
 
-  return fields  
+  return fields
 }
 
 const renderResponseDota = (params) => {
   let fields = [
     { name: 'Lore', value: mapResponse(params, 'Lore') }
-  ]  
+  ]
 
-  return []  
+  return []
 }
 
 const renderResponseHi3 = (params) => {
@@ -74,7 +74,32 @@ const renderResponseHi3 = (params) => {
     { name: 'Personality', value: mapResponse(params, 'Personality') }
   ]
 
-  return fields  
+  return fields
+}
+
+const renderResponseIdolMaster = (params) => {
+  return []
+}
+
+const renderResponseKpop = (params) => {
+  return []
+}
+
+const renderResponseLoveLive = (params) => {
+  let fields = [
+    { name: 'Personality', value: mapResponse(params, 'Personality') },
+    { name: 'Clubs and Hobbies', value: mapResponse(params, 'Clubs and Hobbies') },
+  ]
+
+  return fields
+}
+
+const renderResponseMarvel = (params) => {
+  return []
+}
+
+const renderResponseProduce48 = (params) => {
+  return []
 }
 
 const renderResponseVtuber = (params) => {
@@ -83,7 +108,7 @@ const renderResponseVtuber = (params) => {
     { name: 'Fans', value: mapResponse(params, 'Fans') }
   ]
 
-  return fields  
+  return fields
 }
 
 const renderResponse = (params, type) => {
@@ -98,6 +123,16 @@ const renderResponse = (params, type) => {
       return renderResponseDota(params)
     case 'hi3':
       return renderResponseHi3(params)
+    case 'idolmaster':
+      return renderResponseIdolMaster(params)
+    case 'kpop':
+      return renderResponseKpop(params)
+    case 'love-live':
+      return renderResponseLoveLive(params)
+    case 'marvel':
+      return renderResponseMarvel(params)
+    case 'produce48':
+      return renderResponseProduce48(params)
     case 'vtuber':
       return renderResponseVtuber(params)
     default:

@@ -4,6 +4,11 @@ const command = [
   'bokuben',
   'dota',
   'hi3',
+  'idolmaster',
+  'kpop',
+  'love-live',
+  'marvel',
+  'produce48',
   'vtuber',
 ]
 
